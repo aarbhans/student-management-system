@@ -1,0 +1,5 @@
+rootProject.name = 'student-management-system'
+
+// Infrastructure
+include 'infrastructure:service-discovery'
+include 'services:department-service'
