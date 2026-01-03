@@ -35,6 +35,28 @@ subprojects {
         testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     }
 
+
+    tasks.register("runServiceDiscovery") {
+        group = "application"
+        description = "Start Euerka service discovery"
+
+        dependsOn(
+                ":infrastructure:service-discovery:bootRun"
+        )
+    }
+
+    tasks.register("runAllServices") {
+        group = "application"
+        description = "Run all service modules"
+
+        dependsOn(
+                subprojects
+                .findAll { it.path.startsWith(":services")}
+                .findAll { it.plugins.hasPlugin("org.springframework.boot")}
+                .collect { it.tasks.named("bootRun")}
+        )
+    }
+
     tasks.named('test') {
         useJUnitPlatform()
     }
