@@ -3,3 +3,6 @@ rootProject.name = 'student-management-system'
 // Infrastructure
 include 'infrastructure:service-discovery'
 include 'services:department-service'
+
+// This is WIP and not ready yet
+//include 'services:instructor-service'
